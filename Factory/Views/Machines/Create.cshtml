@@ -1,0 +1,19 @@
+@{
+  Layout = "_Layout";
+}
+
+@using System
+@using Factory.Models
+@model Factory.Models.Machine
+
+<h4>Add a new machine</h4>
+
+<p>@Html.ValidationMessageFor(model => model.Type, "", new { @class = "text-danger", @style = "font-weight: 600;" })</p>
+
+@using (Html.BeginForm())
+{
+    @Html.Label("Enter model type: ")
+    @Html.TextBoxFor(model => model.Type)
+    <input type="submit" value="Add new machine" class="btn" />
+}
+<p>@Html.ActionLink("Back to machine management", "Index")</p>
