@@ -1,0 +1,17 @@
+@{
+  Layout = "_Layout";
+}
+
+@model Factory.Models.Machine
+<h3>Are you sure you want to delete the following machine's profile?</h4>
+<h4>@Html.DisplayFor(model => model.Type)</h3>
+<h5>Click "Delete" to confirm. Click "Cancel" to return to home.</h5>
+<br>
+<br>
+@using (Html.BeginForm())
+{
+    <h2>Delete Machine Profile</h2>
+    <p>Are you sure you want to delete this machine's profile?</p>
+    <button type="submit" class="btn btn-danger" value="Delete">Delete</button>
+    <a href="@Url.Action("Index", "Home")" class="btn btn-default">Cancel</a>
+}
