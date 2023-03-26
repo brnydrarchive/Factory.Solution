@@ -1,0 +1,41 @@
+@{
+  Layout = "_Layout";
+}
+@using Factory.Models
+@model Factory.Models.Engineer
+
+
+<h4>Edit engineer profile: @Html.DisplayFor(model => model.Name)</h4>
+
+@using (Html.BeginForm())
+{
+  @Html.HiddenFor(model => model.EngineerId)
+  @Html.Label("Edit engineer name: ")
+  @Html.EditorFor(model => model.Name)
+  <input type="submit" value="Save" />
+}
+
+@if(@Model.JoinEntities.Count == 0)
+{
+  <p>No machines have been assigned to this engineer.</p>
+}
+else
+{
+  <h4>Machines assigned to this Engineer: </h4>
+  <ul>
+  @foreach(EngineerMachine join in Model.JoinEntities)
+  {
+    <li>@join.Machine.Type</li>
+    @using (Html.BeginForm("DeleteJoin", "Engineers"))
+    {
+      @Html.Hidden("joinId", @join.EngineerMachineId)
+      <input type="submit" value="Delete"/>
+    }
+}
+  </ul>
+}
+
+@Html.Label("Delete this engineer's profile?")
+<p>@Html.ActionLink("Delete", "Delete", "Engineers", new { id = Model.EngineerId })</p>
+
+
