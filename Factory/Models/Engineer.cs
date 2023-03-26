@@ -6,8 +6,8 @@ namespace Factory.Models
   {
     public int EngineerId { get; set; }
     [Required(ErrorMessage = "You must enter a name for an engineer. ")]
-    [RegularExpression("^[a-zA-Z]+$", ErrorMessage = "The name must contain only alphabetic characters.")]
+    [RegularExpression("^[a-zA-Z ]+$", ErrorMessage = "The name must contain only alphabetic characters and spaces.")]
     public string Name { get; set; }
-    public List<EngineerMachine> JoinEntities { get; set; }
+    public List<EngineerMachine> JoinEntities { get; set; } = new List<EngineerMachine>();
   }
 }
