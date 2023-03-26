@@ -1,0 +1,17 @@
+@{
+  Layout = "_Layout";
+}
+
+@model Factory.Models.Engineer
+<h3>Are you sure you want to delete the following engineer's profile?</h4>
+<h4>@Html.DisplayFor(model => model.Name)</h3>
+<h5>Click "Delete" to confirm. Click "Cancel" to return to home.</h5>
+<br>
+<br>
+@using (Html.BeginForm())
+{
+    <h2>Delete Engineer Profile</h2>
+    <p>Are you sure you want to delete this engineer's profile?</p>
+    <button type="submit" class="btn btn-danger" value="Delete">Delete</button>
+    <a href="@Url.Action("Index", "Home")" class="btn btn-default">Cancel</a>
+}
